@@ -43,11 +43,26 @@ public class PlaneMovement : MonoBehaviour
     {
         float linear = PlayerControls.Plane.LinearMove.ReadValue<float>();
         float steer = PlayerControls.Plane.Steer.ReadValue<float>();
-        
+
 
         // this rotates the car on its own axis (turns car left and right)
-        float zDegrees = steer*0.5F;
-        this.transform.Rotate(0 , 0 , zDegrees);
+        // The if statement keeps the plane from being able to go backwards away from the action
+        if ((rb.rotation >= 90 && steer == 1) || (rb.rotation <= -90 && steer == -1))
+        {
+            Debug.Log("Cant steer that Far!!!");
+        }
+
+        else
+        {
+            float zDegrees = steer * 0.5F;
+            this.transform.Rotate(0, 0, zDegrees);
+
+        }
+
+
+
+
+
 
         //Code to adjust velocity of our rigid body, basically allows plane to move foward in the direction its facing when player presses W
 
