@@ -46,17 +46,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "854210ae-c558-4c9d-a70a-14de69a2fa66",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LinearMove",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "positive",
                     "id": "0f012f42-5135-4ede-b0aa-dc1123cd46fb",
                     "path": "<Keyboard>/w",

@@ -66,8 +66,15 @@ public class PlaneMovement : MonoBehaviour
 
         float rotation = rb.rotation* Mathf.Deg2Rad; // unity returns rotation in degrees so we must convert to radians
 
-        rb.velocity = new Vector2(linear*math.cos(rotation)*planeSpeed, linear*math.sin(rotation)*planeSpeed);
-        Debug.Log("x math" + math.cos(rotation) + "y math " + math.sin(rotation));
+        float yVelocity = linear * math.sin(rotation) * planeSpeed;
+
+        float xVelocity = linear * math.cos(rotation) * planeSpeed;
+
+        rb.velocity = new Vector2(xVelocity, yVelocity);
+
+        
+        
+
 
         
 
