@@ -20,6 +20,7 @@ public class AsteroidSpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Asteroid = 
         
     }
 
