@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AsteroidScript : MonoBehaviour
@@ -15,6 +16,11 @@ public class AsteroidScript : MonoBehaviour
     {
         //makes asteroids spin
         transform.Rotate(0, 0, 0.5F);
+
+        
         
     }
+
+
+
 }

@@ -15,6 +15,8 @@ public class AsteroidSpawnerScript : MonoBehaviour
     private Vector3 asteroidSpawnPosition;
     private float spawnRange = 35F; //+/- range an asteroid will spawn from the spawner
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class AsteroidSpawnerScript : MonoBehaviour
     void Update()
     {
         // moves the spawner  horizontally so its off frame
+        
         transform.position = transform.position + new Vector3(spawnerSpeed*Time.deltaTime, 0, 0);
 
         //this chunk of code spawns Asteroids ; Instantiate create a clone of an object
