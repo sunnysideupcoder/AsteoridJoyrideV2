@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049174775744b4748883eeb8397c0b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 28
 --- !u!4 &1183402243
 Transform:
   m_ObjectHideFlags: 0
@@ -266,7 +267,7 @@ Transform:
   m_GameObject: {fileID: 1183402241}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.889064, y: -0.4603759, z: -0.5967139}
+  m_LocalPosition: {x: -14.7, y: 24.7, z: -0.5967139}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -282,10 +283,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1224887613}
   - component: {fileID: 1224887612}
-  - component: {fileID: 1224887611}
   - component: {fileID: 1224887614}
   - component: {fileID: 1224887615}
   - component: {fileID: 1224887616}
+  - component: {fileID: 1224887617}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -293,33 +294,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &1224887611
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224887610}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!212 &1224887612
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -429,8 +403,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd2a076d0bb199459a51838590bfa6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1224887611}
-  planeSpeed: 13.1
+  rb: {fileID: 1224887617}
+  planeSpeed: 30
+  steerSens: 0.8
 --- !u!61 &1224887616
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -476,6 +451,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &1224887617
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224887610}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1285120189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -486,11 +488,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4830546949278086637, guid: ed65e69f530702542814d06a385c9c1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.27376056
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 4830546949278086637, guid: ed65e69f530702542814d06a385c9c1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.396976
+      value: -19.87
       objectReference: {fileID: 0}
     - target: {fileID: 4830546949278086637, guid: ed65e69f530702542814d06a385c9c1b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -568,6 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Asteroid: {fileID: 3715270761754707180, guid: cb4f6d71c3e31f64ebf168cdbbb40484, type: 3}
+  SpawnRate: 0.22
 --- !u!4 &1936970324
 Transform:
   m_ObjectHideFlags: 0
@@ -696,7 +699,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -816,11 +819,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4830546949278086637, guid: ed65e69f530702542814d06a385c9c1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.16
       objectReference: {fileID: 0}
     - target: {fileID: 4830546949278086637, guid: ed65e69f530702542814d06a385c9c1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.4
+      value: 20.03
       objectReference: {fileID: 0}
     - target: {fileID: 4830546949278086637, guid: ed65e69f530702542814d06a385c9c1b, type: 3}
       propertyPath: m_LocalPosition.z
