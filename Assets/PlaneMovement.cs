@@ -36,11 +36,14 @@ public class PlaneMovement : MonoBehaviour
     {
         //rb = gameObject.GetComponent<Rigidbody2D>();
 
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        // declare variables that take in player inputs
         float linear = PlayerControls.Plane.LinearMove.ReadValue<float>();
         float steer = PlayerControls.Plane.Steer.ReadValue<float>();
 
