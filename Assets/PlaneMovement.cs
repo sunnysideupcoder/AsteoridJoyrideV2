@@ -43,24 +43,13 @@ public class PlaneMovement : MonoBehaviour
     {
         float linear = PlayerControls.Plane.LinearMove.ReadValue<float>();
         float steer = PlayerControls.Plane.Steer.ReadValue<float>();
-
-        float zDegrees = steer*0.5F;
-
-        float Force = linear * 0.05F;
-
-        float test = PlayerControls.Plane.Testing.ReadValue<float>();
-
-        Vector2 position = this.transform.position; //this. optional
-
-        Debug.Log("linear " + linear);
-        Debug.Log("Steer " + steer);
-        Debug.Log("Testing " +  test);
-
         
-        velocity = new Vector3(linear, steer,0);
 
-        //
+        // this rotates the car on its own axis (turns car left and right)
+        float zDegrees = steer*0.5F;
         this.transform.Rotate(0 , 0 , zDegrees);
+
+        //Code to adjust velocity of our rigid body, basically allows plane to move foward in the direction its facing when player presses W
 
         float planeSpeed = 10;
 
@@ -70,30 +59,24 @@ public class PlaneMovement : MonoBehaviour
 
         float xVelocity = linear * math.cos(rotation) * planeSpeed;
 
-        rb.velocity = new Vector2(xVelocity, yVelocity;
-
-        
-        
+        rb.velocity = new Vector2(xVelocity, yVelocity);
 
 
-        
 
-      
-        
 
-        //Debug.Log("rb velocity x: " + rb.velocity.x + ", " + "rb velocty: " +  rb.velocity.y);
-        
+        //TEST CODE
+        //float test = PlayerControls.Plane.Testing.ReadValue<float>();
 
-        
+        //Vector2 position = this.transform.position; //this. optional
 
+        //Debug.Log("rb velocity x: " + rb.velocity.x + ", " + "rb velocty: " +  rb.velocity.y
+        //float Force = linear * 0.05F;
         //rb.AddForce(new Vector2 (Force, 0));  // using w and s to apply a linear force
         //Debug.Log(rb.totalForce.x);
 
-        
-
         //this.transform.position = this.transform.position + velocity;
-        
-        
-        
+
+
+
     }
 }
