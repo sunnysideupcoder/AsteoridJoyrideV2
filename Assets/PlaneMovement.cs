@@ -70,7 +70,7 @@ public class PlaneMovement : MonoBehaviour
 
         float xVelocity = linear * math.cos(rotation) * planeSpeed;
 
-        rb.velocity = new Vector2(xVelocity, yVelocity);
+        rb.velocity = new Vector2(xVelocity, yVelocity;
 
         
         
