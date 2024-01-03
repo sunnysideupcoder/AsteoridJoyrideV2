@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlaneMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public float planeSpeed;
+    public float steerSens;
     private Vector2 position;
     private Vector2 velocity;
     private Vector2 rotation;
@@ -57,19 +59,15 @@ public class PlaneMovement : MonoBehaviour
 
         else
         {
-            float zDegrees = steer * 0.5F;
+            float zDegrees = steer * steerSens;
             this.transform.Rotate(0, 0, zDegrees);
 
         }
 
 
-
-
-
-
         //Code to adjust velocity of our rigid body, basically allows plane to move foward in the direction its facing when player presses W
 
-        float planeSpeed = 10;
+        //float planeSpeed = 10; 
 
         float rotation = rb.rotation* Mathf.Deg2Rad; // unity returns rotation in degrees so we must convert to radians
 

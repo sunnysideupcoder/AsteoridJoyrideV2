@@ -7,8 +7,8 @@ public class AsteroidSpawnerScript : MonoBehaviour
 {
     //this code must be changed to assign game object to asteroid when script starts if initial asteroid gets deleted from eventually
     public GameObject Asteroid;
-    private float SpawnRate = 1.2F;
-    private float spawnerSpeed = 5; //change to be tbound to something else like camera speed or a bit ahead of player position
+    public float SpawnRate;
+ 
     //private float verticalSpawnerSpeed = 5;
     private float timer = 0;
     private Vector3 SpawnerPosition;
@@ -27,9 +27,6 @@ public class AsteroidSpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // moves the spawner  horizontally so its off frame
-        
-        transform.position = transform.position + new Vector3(spawnerSpeed*Time.deltaTime, 0, 0);
 
         //this chunk of code spawns Asteroids ; Instantiate create a clone of an object
         SpawnerPosition = transform.position;

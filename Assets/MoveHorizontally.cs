@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class MoveHorizontally : MonoBehaviour
 {
-    GameObject[] barriers; 
+    GameObject[] barriers;
+    public float speed;
 
     // Start is called before the first frame update
     void Start()
     {
         barriers = GameObject.FindGameObjectsWithTag("HorizontalMotion");
-        Debug.Log(barriers);
-        if (barriers == null)
-        {
-            Debug.Log("couldnt find tag horizonatl motion");
-        }
+
+        
+
         
     }
 
@@ -26,12 +25,12 @@ public class MoveHorizontally : MonoBehaviour
             moveHorizontally(barriers[i]);
         }
        
-        Debug.Log("Hello");
+        
     }
 
     public void moveHorizontally(GameObject obj)
     {
-        float speed = 5F;
+        
         obj.transform.position = obj.transform.position + new Vector3(speed * Time.deltaTime, 0, 0);
     }
 }

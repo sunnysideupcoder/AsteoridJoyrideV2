@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public float cameraSpeed = 5.0F;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +14,8 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = transform.position + new Vector3(cameraSpeed*Time.deltaTime, 0, 0);
+        //old movement before moved to MoveHorizontally script
+        //this.transform.position = transform.position + new Vector3(cameraSpeed*Time.deltaTime, 0, 0);
     }
 
 }
