@@ -20,7 +20,7 @@ public class AsteroidSpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Asteroid = 
+        
         
     }
 
@@ -36,14 +36,13 @@ public class AsteroidSpawnerScript : MonoBehaviour
 
         timer += Time.deltaTime;  //counts up in real life time, independent of frame rate
 
-        Debug.Log("Timer " + timer);
-        Debug.Log("Spawn Rate " + SpawnRate);
+        //Debug.Log("Timer " + timer);
+        //Debug.Log("Spawn Rate " + SpawnRate);
 
         if (timer > SpawnRate)
         {
             //random position for asteroid to spawn in 
             asteroidSpawnPosition = new Vector3(transform.position.x  , transform.position.y + ((Random.value - 0.5F) * spawnRange), transform.position.z);
-            Debug.Log("asteroid spawend");
             Instantiate(Asteroid,asteroidSpawnPosition, this.transform.rotation);
             timer =0;
         }
