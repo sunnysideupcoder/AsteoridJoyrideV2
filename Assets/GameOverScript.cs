@@ -24,8 +24,6 @@ public class GameOverScript : MonoBehaviour
 
         if (plane == null)
         {
-            
-            Debug.Log("PLane nUll game over");
             Logic.gameOver();
         }
 
@@ -36,7 +34,13 @@ public class GameOverScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         
         
-    } 
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("quit game");
+        Application.Quit();
+    }
 
 
 
