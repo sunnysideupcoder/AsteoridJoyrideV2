@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameOverScript : MonoBehaviour
 {
     public GameObject GameOverObj;
+    public GameObject HorizontalObj;
     GameObject plane;
     public LogicScript Logic;
     void Start()
@@ -20,10 +21,10 @@ public class GameOverScript : MonoBehaviour
         //this checks if the plane is still alive and the moment it dies it activates the game over screen
         plane = GameObject.Find("Plane");
 
-        Debug.Log(plane);
 
         if (plane == null)
         {
+            
             Debug.Log("PLane nUll game over");
             Logic.gameOver();
         }
@@ -37,9 +38,6 @@ public class GameOverScript : MonoBehaviour
         
     } 
 
-    void GameOverScreen()
-    {
-        //GameOver = GameObject.Find("GameOverScreen");
-    }
+
 
 }

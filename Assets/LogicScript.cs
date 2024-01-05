@@ -17,8 +17,10 @@ public class LogicScript : MonoBehaviour
         
     }
 
+    //repositions game over screen to be on top of logicscript and activates it
     public void gameOver()
     {
+        GameOver.transform.position = transform.position;
         GameOver.SetActive(true);
     }
 
