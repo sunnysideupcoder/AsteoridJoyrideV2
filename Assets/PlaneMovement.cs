@@ -11,6 +11,10 @@ public class PlaneMovement : MonoBehaviour
     private Vector2 position;
     private Vector2 velocity;
     private Vector2 rotation;
+    public bool alive;
+
+    private GameOverScript GameOver;
+    
     
         
     private Controls PlayerControls;
@@ -37,8 +41,10 @@ public class PlaneMovement : MonoBehaviour
     void Start()
     {
         //rb = gameObject.GetComponent<Rigidbody2D>();
-
+        alive = true;
         
+
+
 
     }
 
@@ -94,5 +100,14 @@ public class PlaneMovement : MonoBehaviour
 
 
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameOver = GameObject.Find("GameOverScreen").GetComponent<GameOverScript>();
+        GameOver.GameRestart();
+        Debug.Log("gameRestart called");
+        
+        
     }
 }

@@ -24,7 +24,9 @@ public class FlamesScript : MonoBehaviour
         if (otherCollider != null)
         {
             //Debug.Log("Collision");
-            Destroy(otherCollider.gameObject);  //gameObject always refers to the game object that holds this script
+            //Destroy(otherCollider.gameObject);  //gameObject always refers to the game object that holds this script
+
+            otherCollider.gameObject.SetActive(false);
         }
     }
 

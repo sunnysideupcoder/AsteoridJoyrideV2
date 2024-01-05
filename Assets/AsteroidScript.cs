@@ -32,8 +32,9 @@ public class AsteroidScript : MonoBehaviour
         if (otherCollider == Plane.GetComponent<Collider2D>())
         {
 
-            Debug.Log("Plane Ran into Asteroid");
-            Destroy(otherCollider.gameObject);  //gameObject always refers to the game object that holds this script
+            //Debug.Log("Plane Ran into Asteroid");
+            //Destroy(otherCollider.gameObject);  //gameObject always refers to the game object that holds this script
+            otherCollider.gameObject.SetActive(false);
         }
     }
 
