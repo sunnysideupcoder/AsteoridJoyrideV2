@@ -1,18 +1,25 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameOverScript : MonoBehaviour
 {
     public GameObject GameOverObj;
     public GameObject HorizontalObj;
+    public TextMeshProUGUI ScoreText;   //had to assign it as Text Object to be able to access specific methods
     GameObject plane;
     public LogicScript Logic;
     void Start()
     {
         Logic = GameObject.Find("Logic").GetComponent<LogicScript>();
-        Debug.Log("Game Over script started");
+        //Debug.Log("Game Over script started");
         GameOverObj = GameObject.Find("GameOverScreen");
-        //Debug.Log(GameOverObj.name);
+
+        //Change "Score" only when this is fist called so it stays in the position logic had right when the game ended aka right when this screen is activated
+        Debug.Log(ScoreText);
+        UpdateScore();
+        
     }
 
     // Update is called once per frame
@@ -42,6 +49,15 @@ public class GameOverScript : MonoBehaviour
         Application.Quit();
     }
 
+    //method to change score on display screen, uses distance covered method from logic object
+    void UpdateScore()
+    {
+        
+        ScoreText.SetText("Score: " + Logic.distanceCovered() + " meters");
+        
+        
+
+    }
 
 
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class LogicScript : MonoBehaviour
 {
     public GameObject GameOver;
+    private float distance;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +25,9 @@ public class LogicScript : MonoBehaviour
         GameOver.SetActive(true);
     }
 
+    public float distanceCovered()
+    {
+        return distance = transform.position.x;
+    }
 
 }
