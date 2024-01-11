@@ -22,7 +22,7 @@ public class PlaneMovement : MonoBehaviour
     private void Awake()
     {
         PlayerControls = new Controls();
-        Application.targetFrameRate = 150; //sets what frame rate game will try to run at
+        
 
     }
 

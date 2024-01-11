@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 
 public class LogicScript : MonoBehaviour
 {
     public GameObject GameOver;
     private float distance;
+    public int fps;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        Application.targetFrameRate = fps; //sets what frame rate game will try to run at
+    }
     void Start()
     {
         

@@ -6,6 +6,8 @@ using UnityEngine;
 public class AsteroidScript : MonoBehaviour
 {
     public GameObject Plane;
+    public float spinRate;
+    private int count = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,16 +21,31 @@ public class AsteroidScript : MonoBehaviour
     void Update()
     {
         //makes asteroids spin
-        transform.Rotate(0, 0, 0.5F);
+        //Time.timeScale = 1.0f;
+        //Debug.Log(Time.timeScale);
 
-        
-        
+        //timedetla time to make it frame rate independent
+        transform.Rotate(0, 0, spinRate*Time.deltaTime);
+
+
+
+        //if (Quaternion.Angle(transform.rotation, Quaternion.identity) < 0.01f)
+        //{
+        //    count++;
+        //}
+
+        //Debug.Log("Rotation  " + transform.rotation + "Identity " + Quaternion.identity + "Angle " + Quaternion.Angle(transform.rotation, Quaternion.identity));
+
     }
+
+
+
 
     //destroy plane when it collides with asteroid
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-     
+        Debug.Log(count);
+
         if (otherCollider == Plane.GetComponent<Collider2D>())
         {
 

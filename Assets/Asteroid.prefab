@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Plane: {fileID: 0}
+  spinRate: 750
 --- !u!60 &947213170516208740
 PolygonCollider2D:
   m_ObjectHideFlags: 0
