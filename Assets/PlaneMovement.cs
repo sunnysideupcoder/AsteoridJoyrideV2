@@ -12,6 +12,7 @@ public class PlaneMovement : MonoBehaviour
     private Vector2 velocity;
     private Vector2 rotation;
     public bool alive;
+    public int counter;
 
     private GameOverScript GameOver;
     
@@ -21,6 +22,7 @@ public class PlaneMovement : MonoBehaviour
     private void Awake()
     {
         PlayerControls = new Controls();
+        Application.targetFrameRate = 150; //sets what frame rate game will try to run at
 
     }
 
@@ -42,7 +44,7 @@ public class PlaneMovement : MonoBehaviour
     {
         //rb = gameObject.GetComponent<Rigidbody2D>();
         alive = true;
-        
+        counter = 0;
 
 
 
@@ -58,14 +60,19 @@ public class PlaneMovement : MonoBehaviour
 
         // this rotates the car on its own axis (turns car left and right)
         // The if statement keeps the plane from being able to go backwards away from the action
+        counter++;
+
+        
+
         if ((rb.rotation >= 90 && steer == 1) || (rb.rotation <= -90 && steer == -1))
         {
-            Debug.Log("Cant steer that Far!!!");
+            //Debug.Log("Cant steer that Far!!!");
         }
 
         else
         {
-            float zDegrees = steer * steerSens;
+            //original steersens was 0.8
+            float zDegrees = steer * steerSens*Time.deltaTime;
             this.transform.Rotate(0, 0, zDegrees);
 
         }
@@ -108,6 +115,23 @@ public class PlaneMovement : MonoBehaviour
         GameOver.GameRestart();
         Debug.Log("gameRestart called");
         
+        
+    }
+
+    //function to make plane horizontal and then rotate slightly to center   
+    public void align() { 
+    
+        transform.rotation = Quaternion.identity;
+
+        int rotation = 5;
+        if (transform.position.y > 0)
+        {
+            this.transform.Rotate(0, 0, -rotation);
+        }
+        else
+        {
+            this.transform.Rotate(0,0,rotation);
+        }
         
     }
 }
