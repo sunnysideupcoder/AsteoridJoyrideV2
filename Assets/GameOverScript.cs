@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
 using System.Threading;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameOverScript : MonoBehaviour
 {
@@ -13,14 +14,21 @@ public class GameOverScript : MonoBehaviour
     GameObject plane;
     public LogicScript Logic;
     public int count = 0;
+    public GameHandlerScript GameHandler;
+    public TextMeshProUGUI LeaderText;
     void Start()
     {
+        Debug.Log("Game over script called");
         Logic = GameObject.Find("Logic").GetComponent<LogicScript>();
         //Debug.Log("Game Over script started");
         GameOverObj = GameObject.Find("GameOverScreen");
 
+        GameHandler = GameObject.Find("GameHandler").GetComponent<GameHandlerScript>();
+
         //Change "Score" only when this is fist called so it stays in the position logic had right when the game ended aka right when this screen is activated
         UpdateScore();
+        UpdateLeaderBoardText();
+        
 
     }
 
@@ -58,7 +66,33 @@ public class GameOverScript : MonoBehaviour
         String display = String.Format("Score: {0:F2} meters!!!", distance);
         ScoreText.SetText(display);  
 
+        
+
     }
+
+    private void UpdateLeaderBoardText()
+    {
+        Debug.Log("Update LeaderB Board Text Called");
+        float currentScore = Logic.distanceCovered();
+        GameHandlerScript.LeaderBoardData leaderBoard = GameHandler.UpdateLeaderboard(currentScore);
+
+        //this part makes a very long string by referecing the different parts of the leaderboard scores array then sets the text of the object
+        string LeaderBoardStr = "";
+        int count = 3;
+        for(int i  = 0; i < count; i++)
+        {
+            LeaderBoardStr = LeaderBoardStr + String.Format( i + 1 + ". " + leaderBoard.scores[i] + "\n");
+            
+        }
+
+        LeaderText.SetText(LeaderBoardStr);
+
+
+        //LeaderText
+    }
+
+
+
 
 
 }

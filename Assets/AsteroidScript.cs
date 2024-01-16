@@ -44,7 +44,7 @@ public class AsteroidScript : MonoBehaviour
     //destroy plane when it collides with asteroid
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        Debug.Log(count);
+        
 
         if (otherCollider == Plane.GetComponent<Collider2D>())
         {

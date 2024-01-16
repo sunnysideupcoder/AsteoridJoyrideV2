@@ -36,4 +36,5 @@ public class LogicScript : MonoBehaviour
         return distance = transform.position.x;
     }
 
+
 }
