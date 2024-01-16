@@ -77,8 +77,8 @@ public class GameOverScript : MonoBehaviour
         GameHandlerScript.LeaderBoardData leaderBoard = GameHandler.UpdateLeaderboard(currentScore);
 
         //this part makes a very long string by referecing the different parts of the leaderboard scores array then sets the text of the object
-        string LeaderBoardStr = "";
-        int count = 3;
+        string LeaderBoardStr = "Top Scores!!!\n";
+        int count = GameHandler.numScores;
         for(int i  = 0; i < count; i++)
         {
             LeaderBoardStr = LeaderBoardStr + String.Format( i + 1 + ". " + leaderBoard.scores[i] + "\n");
@@ -88,7 +88,6 @@ public class GameOverScript : MonoBehaviour
         LeaderText.SetText(LeaderBoardStr);
 
 
-        //LeaderText
     }
 
 

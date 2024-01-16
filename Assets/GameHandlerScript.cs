@@ -8,9 +8,22 @@ using UnityEngine.UIElements;
 public class GameHandlerScript : MonoBehaviour
 {
     public LogicScript logic;
+    private string filepath = Application.dataPath + "/LeaderBoardData.json";
+    public int numScores = 10;
     // Start is called before the first frame update
     void Start()
     { 
+
+        Debug.Log("Checking if file exists: " + File.Exists(filepath));
+
+        //checks if Json file with LeaderBoard Data already exists
+        // If it doesn't it creats one
+        if (!(File.Exists(filepath)))
+        {
+            Debug.Log("File Created");
+            CreateLeaderboard(numScores, filepath);
+        }
+
         /*
         //assinging scores 
         LeaderBoardData leaderBoardData = new LeaderBoardData();
@@ -31,6 +44,26 @@ public class GameHandlerScript : MonoBehaviour
         */
     }
 
+    //creates a json file with leaderboard data with 0s as fields
+    public void CreateLeaderboard(int numScores, string filepath)
+    {
+        //creating leaderboarddata object with appropriate data
+        LeaderBoardData leaderBoardData = new LeaderBoardData(numScores);
+
+        for(int i =0; i < numScores; i++)
+        {
+            leaderBoardData.scores[i] = 0;
+        }
+
+        // creating a json string from game object leaderboard data
+        string jsondata = JsonUtility.ToJson(leaderBoardData);
+
+        //saving json string to json file
+        File.WriteAllText(filepath, jsondata);
+
+        Debug.Log("Json data" + jsondata);
+    }
+
 
     //Reads Json file containing Leaderboard data and updates it with current score in the appropriate slot
     //also returns updated leader board data object
@@ -43,7 +76,8 @@ public class GameHandlerScript : MonoBehaviour
         //insert new number into array
         // game over scrip should be set up to use the array we're updating after we're finished updating
 
-        string filepath = Application.dataPath + "/LeaderBoardData.json";
+        
+        //string filepath = Application.dataPath + "/LeaderBoardData.json"; use file path from upper variable
        
         string json = File.ReadAllText(filepath);
 
