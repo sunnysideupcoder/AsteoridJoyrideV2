@@ -38,9 +38,7 @@ public class AsteroidScript : MonoBehaviour
 
         if (otherCollider == Plane.GetComponent<PolygonCollider2D>())
         {
-            Debug.Log("Hella COllision");
-            //Debug.Log("Plane Ran into Asteroid");
-            //Destroy(otherCollider.gameObject);  //gameObject always refers to the game object that holds this script
+            //gameObject always refers to the game object that holds this script
             otherCollider.gameObject.SetActive(false);
         }
     }

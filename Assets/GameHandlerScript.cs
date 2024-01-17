@@ -14,7 +14,7 @@ public class GameHandlerScript : MonoBehaviour
     void Start()
     { 
 
-        Debug.Log("Checking if file exists: " + File.Exists(filepath));
+        
 
         //checks if Json file with LeaderBoard Data already exists
         // If it doesn't it creats one
@@ -51,7 +51,7 @@ public class GameHandlerScript : MonoBehaviour
     //also returns updated leader board data object
     public LeaderBoardData UpdateLeaderboard(float currentScore)
     {
-        Debug.Log("Update Leader Board  Called");
+        
 
         //get data from json 
         // sort array 
@@ -63,7 +63,7 @@ public class GameHandlerScript : MonoBehaviour
        
         string json = File.ReadAllText(filepath);
 
-        Debug.Log("Json string: " + json);
+        
         LeaderBoardData loadedData = JsonUtility.FromJson<LeaderBoardData>(json);  // converts json string from file to LeaderBoard Data object
 
 
@@ -75,7 +75,7 @@ public class GameHandlerScript : MonoBehaviour
         //checking if this runs score would even make top 10
         if (currentScore > loadedData.scores[loadedData.scores.Length -1])
         {
-            Debug.Log("last score: " + loadedData.scores[loadedData.scores.Length - 1]);
+            
             
             //Loop through top scores to find the highest score current score is greater than
             for (int i = 0; i < loadedData.scores.Length; i++)

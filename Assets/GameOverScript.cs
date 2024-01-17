@@ -18,7 +18,7 @@ public class GameOverScript : MonoBehaviour
     public TextMeshProUGUI LeaderText;
     void Start()
     {
-        Debug.Log("Game over script called");
+        
         Logic = GameObject.Find("Logic").GetComponent<LogicScript>();
         //Debug.Log("Game Over script started");
         GameOverObj = GameObject.Find("GameOverScreen");
@@ -72,7 +72,7 @@ public class GameOverScript : MonoBehaviour
 
     private void UpdateLeaderBoardText()
     {
-        Debug.Log("Update LeaderB Board Text Called");
+        
         float currentScore = Logic.distanceCovered();
         GameHandlerScript.LeaderBoardData leaderBoard = GameHandler.UpdateLeaderboard(currentScore);
 
