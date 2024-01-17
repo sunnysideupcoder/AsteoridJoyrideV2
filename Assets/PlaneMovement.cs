@@ -9,11 +9,10 @@ public class PlaneMovement : MonoBehaviour
     public Rigidbody2D rb;
     public float planeSpeed;
     public float steerSens;
-    private Vector2 position;
-    private Vector2 velocity;
-    private Vector2 rotation;
-    public bool alive;
-    public int counter;
+    //private Vector2 position;
+    //private Vector2 velocity;
+    //private Vector2 rotation;
+    //public bool alive;
     public GameObject logic;
     public float playerSens;
     public bool escape;
@@ -47,8 +46,8 @@ public class PlaneMovement : MonoBehaviour
     void Start()
     {
         //rb = gameObject.GetComponent<Rigidbody2D>();
-        alive = true;
-        counter = 0;
+        //alive = true;
+        
 
         LogicScript logicScript = logic.GetComponent<LogicScript>();
 
@@ -69,19 +68,11 @@ public class PlaneMovement : MonoBehaviour
 
         //bool escape = PlayerControls.Plane.Escape.ReadValue<bool>();
 
-        // CHATGPT code to convert float value to bool 
-        float escapeValue = PlayerControls.Plane.Escape.ReadValue<float>();
-        bool escape = Mathf.Approximately(escapeValue, 1.0f);
 
-        //control escape key
-        if (escape)
-        { 
-            SceneManager.LoadScene("Main Menu");
-        }
 
         // this rotates the car on its own axis (turns car left and right)
         // The if statement keeps the plane from being able to go backwards away from the action
-        counter++;
+        
 
         
         
@@ -93,7 +84,7 @@ public class PlaneMovement : MonoBehaviour
 
         else
         {
-            //original steersens was 0.8
+            
             float zDegrees = steer * steerSens*Time.deltaTime*playerSens;
             this.transform.Rotate(0, 0, zDegrees);
 
@@ -102,7 +93,6 @@ public class PlaneMovement : MonoBehaviour
 
         //Code to adjust velocity of our rigid body, basically allows plane to move foward in the direction its facing when player presses W
 
-        //float planeSpeed = 10; 
 
         float rotation = rb.rotation* Mathf.Deg2Rad; // unity returns rotation in degrees so we must convert to radians
 
@@ -110,10 +100,6 @@ public class PlaneMovement : MonoBehaviour
         
 
         float xVelocity = linear * math.cos(rotation) * planeSpeed * Time.deltaTime;
-
-        //rb.velocity = new Vector2(xVelocity, yVelocity);
-
-        //linear speed before time delta time was 30
 
 
 
