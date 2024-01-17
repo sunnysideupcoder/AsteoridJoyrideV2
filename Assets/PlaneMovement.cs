@@ -2,6 +2,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlaneMovement : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlaneMovement : MonoBehaviour
     public int counter;
     public GameObject logic;
     public float playerSens;
+    public bool escape;
 
     private GameOverScript GameOver;
     
@@ -65,11 +67,23 @@ public class PlaneMovement : MonoBehaviour
         float linear = PlayerControls.Plane.LinearMove.ReadValue<float>();
         float steer = PlayerControls.Plane.Steer.ReadValue<float>();
 
+        //bool escape = PlayerControls.Plane.Escape.ReadValue<bool>();
+
+        // CHATGPT code to convert float value to bool 
+        float escapeValue = PlayerControls.Plane.Escape.ReadValue<float>();
+        bool escape = Mathf.Approximately(escapeValue, 1.0f);
+
+        //control escape key
+        if (escape)
+        { 
+            SceneManager.LoadScene("Main Menu");
+        }
 
         // this rotates the car on its own axis (turns car left and right)
         // The if statement keeps the plane from being able to go backwards away from the action
         counter++;
 
+        
         
 
         if ((rb.rotation >= 90 && steer == 1) || (rb.rotation <= -90 && steer == -1))
@@ -98,20 +112,6 @@ public class PlaneMovement : MonoBehaviour
 
         rb.velocity = new Vector2(xVelocity, yVelocity);
 
-
-
-
-        //TEST CODE
-        //float test = PlayerControls.Plane.Testing.ReadValue<float>();
-
-        //Vector2 position = this.transform.position; //this. optional
-
-        //Debug.Log("rb velocity x: " + rb.velocity.x + ", " + "rb velocty: " +  rb.velocity.y
-        //float Force = linear * 0.05F;
-        //rb.AddForce(new Vector2 (Force, 0));  // using w and s to apply a linear force
-        //Debug.Log(rb.totalForce.x);
-
-        //this.transform.position = this.transform.position + velocity;
 
 
 

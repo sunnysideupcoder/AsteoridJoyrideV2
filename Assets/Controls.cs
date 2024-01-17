@@ -46,10 +46,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Testing"",
-                    ""type"": ""Button"",
+                    ""name"": ""Escape"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""adef6d9a-67af-40d2-b458-b7c0bf1eda06"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -114,11 +114,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""02fae512-f47e-416a-920e-df1d437b737d"",
-                    ""path"": ""<Keyboard>/g"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Testing"",
+                    ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -131,7 +131,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Plane = asset.FindActionMap("Plane", throwIfNotFound: true);
         m_Plane_LinearMove = m_Plane.FindAction("LinearMove", throwIfNotFound: true);
         m_Plane_Steer = m_Plane.FindAction("Steer", throwIfNotFound: true);
-        m_Plane_Testing = m_Plane.FindAction("Testing", throwIfNotFound: true);
+        m_Plane_Escape = m_Plane.FindAction("Escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -195,14 +195,14 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IPlaneActions> m_PlaneActionsCallbackInterfaces = new List<IPlaneActions>();
     private readonly InputAction m_Plane_LinearMove;
     private readonly InputAction m_Plane_Steer;
-    private readonly InputAction m_Plane_Testing;
+    private readonly InputAction m_Plane_Escape;
     public struct PlaneActions
     {
         private @Controls m_Wrapper;
         public PlaneActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @LinearMove => m_Wrapper.m_Plane_LinearMove;
         public InputAction @Steer => m_Wrapper.m_Plane_Steer;
-        public InputAction @Testing => m_Wrapper.m_Plane_Testing;
+        public InputAction @Escape => m_Wrapper.m_Plane_Escape;
         public InputActionMap Get() { return m_Wrapper.m_Plane; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -218,9 +218,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Steer.started += instance.OnSteer;
             @Steer.performed += instance.OnSteer;
             @Steer.canceled += instance.OnSteer;
-            @Testing.started += instance.OnTesting;
-            @Testing.performed += instance.OnTesting;
-            @Testing.canceled += instance.OnTesting;
+            @Escape.started += instance.OnEscape;
+            @Escape.performed += instance.OnEscape;
+            @Escape.canceled += instance.OnEscape;
         }
 
         private void UnregisterCallbacks(IPlaneActions instance)
@@ -231,9 +231,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Steer.started -= instance.OnSteer;
             @Steer.performed -= instance.OnSteer;
             @Steer.canceled -= instance.OnSteer;
-            @Testing.started -= instance.OnTesting;
-            @Testing.performed -= instance.OnTesting;
-            @Testing.canceled -= instance.OnTesting;
+            @Escape.started -= instance.OnEscape;
+            @Escape.performed -= instance.OnEscape;
+            @Escape.canceled -= instance.OnEscape;
         }
 
         public void RemoveCallbacks(IPlaneActions instance)
@@ -255,6 +255,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnLinearMove(InputAction.CallbackContext context);
         void OnSteer(InputAction.CallbackContext context);
-        void OnTesting(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
 }

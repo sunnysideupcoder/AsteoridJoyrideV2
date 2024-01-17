@@ -24,10 +24,10 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Testing",
-                    "type": "Button",
+                    "name": "Escape",
+                    "type": "PassThrough",
                     "id": "adef6d9a-67af-40d2-b458-b7c0bf1eda06",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -92,11 +92,11 @@
                 {
                     "name": "",
                     "id": "02fae512-f47e-416a-920e-df1d437b737d",
-                    "path": "<Keyboard>/g",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Testing",
+                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

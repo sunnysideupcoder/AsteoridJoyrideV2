@@ -44,11 +44,11 @@ public class AsteroidScript : MonoBehaviour
     //destroy plane when it collides with asteroid
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        
+        //Debug.Log("COLLISION");
 
-        if (otherCollider == Plane.GetComponent<Collider2D>())
+        if (otherCollider == Plane.GetComponent<PolygonCollider2D>())
         {
-
+            Debug.Log("Hella COllision");
             //Debug.Log("Plane Ran into Asteroid");
             //Destroy(otherCollider.gameObject);  //gameObject always refers to the game object that holds this script
             otherCollider.gameObject.SetActive(false);
