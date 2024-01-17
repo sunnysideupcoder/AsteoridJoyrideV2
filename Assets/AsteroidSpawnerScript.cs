@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using System.IO;
 
 public class AsteroidSpawnerScript : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class AsteroidSpawnerScript : MonoBehaviour
     private Vector3 SpawnerPosition;
     private Vector3 asteroidSpawnPosition;
     private float spawnRange = 35F; //+/- range an asteroid will spawn from the spawner
+    public GameObject logic;
+
+    
 
     //adjust the private field spawn rate
     public void setSpawnRate(float SpawnRate)
@@ -21,10 +25,12 @@ public class AsteroidSpawnerScript : MonoBehaviour
         this.SpawnRate = SpawnRate;
     }
 
-    // Start is called before the first frame update
+    //grab difficulty setting from logic scrip which grabs it from json file
     void Start()
     {
+        LogicScript logicScript = logic.GetComponent<LogicScript>();
         
+        UpdateSpawnRate(logicScript.difficulty);
         
     }
 
@@ -54,4 +60,27 @@ public class AsteroidSpawnerScript : MonoBehaviour
         
         
     }
+
+    private void UpdateSpawnRate(int difficutly)
+    {
+    
+        switch (difficutly)
+        {
+            case 0:
+                SpawnRate = SpawnRate - 0.1F;
+                break;
+            case 1:
+      
+                break;
+            case 2:
+                SpawnRate = SpawnRate + 0.1F;
+                break;
+
+
+
+        }
+
+    }
+
+
 }

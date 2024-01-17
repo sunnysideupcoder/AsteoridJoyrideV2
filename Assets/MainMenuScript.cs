@@ -1,13 +1,21 @@
 using System.IO;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static GameHandlerScript;
+using TMPro;
+using TMPro.EditorUtilities;
+using Unity.VisualScripting;
 
 public class MainMenuScript : MonoBehaviour
 {
     //public GameObject AsteroidSpawner;
     private string SettingsFilepath = Application.dataPath + "/PlayerSettings.json";
 
+    public Slider sensSlider;
+    public TMP_Dropdown dropdown;
+    
 
     
 
@@ -32,6 +40,19 @@ public class MainMenuScript : MonoBehaviour
 
             
         }
+
+
+        //set default values for slider and drop down menu
+        //need to make an object with json values 
+
+        string json = File.ReadAllText(SettingsFilepath);
+
+        PlayerSetting loadedData = JsonUtility.FromJson<PlayerSetting>(json);
+
+        //set start values based of json file values
+        sensSlider.value = loadedData.sensativity;
+        dropdown.value = loadedData.difficulty;
+
 
 
 
@@ -90,8 +111,8 @@ public class MainMenuScript : MonoBehaviour
     {
         Debug.Log("Create Settings invoked");
         //set default settings in object
-        playerSetting.setSensativity(1);
-        playerSetting.setDifficulty(0);
+        playerSetting.setSensativity(0.5F);
+        playerSetting.setDifficulty(2);
 
         //Debug.Log("Updated sens" + playerSetting.getSensativity());
         //Debug.Log("Updated difficulty" + playerSetting.getDifficulty());
@@ -154,6 +175,11 @@ public class MainMenuScript : MonoBehaviour
 
         }
 
+    }
+
+    public void ChangeSens(float sensitiviy)
+    {
+        UpdateSettings(SettingsFilepath, sensitiviy);
     }
 
     public class PlayerSetting

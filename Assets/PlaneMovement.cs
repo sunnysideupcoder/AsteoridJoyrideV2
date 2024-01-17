@@ -13,6 +13,8 @@ public class PlaneMovement : MonoBehaviour
     private Vector2 rotation;
     public bool alive;
     public int counter;
+    public GameObject logic;
+    public float playerSens;
 
     private GameOverScript GameOver;
     
@@ -46,6 +48,12 @@ public class PlaneMovement : MonoBehaviour
         alive = true;
         counter = 0;
 
+        LogicScript logicScript = logic.GetComponent<LogicScript>();
+
+        playerSens = logicScript.sens;
+
+        
+
 
 
     }
@@ -72,7 +80,7 @@ public class PlaneMovement : MonoBehaviour
         else
         {
             //original steersens was 0.8
-            float zDegrees = steer * steerSens*Time.deltaTime;
+            float zDegrees = steer * steerSens*Time.deltaTime*playerSens;
             this.transform.Rotate(0, 0, zDegrees);
 
         }

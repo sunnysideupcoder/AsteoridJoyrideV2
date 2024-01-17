@@ -546,7 +546,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOver: {fileID: 1314033094}
-  fps: 20
+  fps: 113
+  difficulty: 0
+  sens: 0
 --- !u!4 &811413239
 Transform:
   m_ObjectHideFlags: 0
@@ -1025,9 +1027,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1224887617}
   planeSpeed: 30
-  steerSens: 120
+  steerSens: 240
   alive: 0
   counter: 0
+  logic: {fileID: 811413237}
+  playerSens: 0
 --- !u!61 &1224887616
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1661,7 +1665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Asteroid: {fileID: 3715270761754707180, guid: cb4f6d71c3e31f64ebf168cdbbb40484, type: 3}
-  SpawnRate: 0.22
+  logic: {fileID: 811413237}
 --- !u!4 &1936970324
 Transform:
   m_ObjectHideFlags: 0
