@@ -106,15 +106,18 @@ public class PlaneMovement : MonoBehaviour
 
         float rotation = rb.rotation* Mathf.Deg2Rad; // unity returns rotation in degrees so we must convert to radians
 
-        float yVelocity = linear * math.sin(rotation) * planeSpeed;
+        float yVelocity = linear * math.sin(rotation) * planeSpeed*Time.deltaTime;
+        Debug.Log("cos roatation " + math.cos(rotation));
 
-        float xVelocity = linear * math.cos(rotation) * planeSpeed;
+        float xVelocity = linear * math.cos(rotation) * planeSpeed * Time.deltaTime;
 
         rb.velocity = new Vector2(xVelocity, yVelocity);
 
+        //linear speed before time delta time was 30
 
+        
 
-
+        //obj.transform.position = obj.transform.position + new Vector3(speed * Time.deltaTime, 0, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

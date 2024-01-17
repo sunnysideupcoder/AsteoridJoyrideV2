@@ -20,21 +20,11 @@ public class AsteroidScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //makes asteroids spin
-        //Time.timeScale = 1.0f;
-        //Debug.Log(Time.timeScale);
 
-        //timedetla time to make it frame rate independent
         transform.Rotate(0, 0, spinRate*Time.deltaTime);
 
-
-
-        //if (Quaternion.Angle(transform.rotation, Quaternion.identity) < 0.01f)
-        //{
-        //    count++;
-        //}
-
-        //Debug.Log("Rotation  " + transform.rotation + "Identity " + Quaternion.identity + "Angle " + Quaternion.Angle(transform.rotation, Quaternion.identity));
+        //asteroids move left so ship doesnt have to move as fast
+        //transform.position = obj.transform.position + new Vector3(speed * Time.deltaTime, 0, 0);
 
     }
 
