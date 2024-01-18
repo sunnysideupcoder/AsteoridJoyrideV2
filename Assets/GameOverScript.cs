@@ -13,7 +13,7 @@ public class GameOverScript : MonoBehaviour
     public TextMeshProUGUI ScoreText;   //had to assign it as Text Object to be able to access specific methods
     GameObject plane;
     public LogicScript Logic;
-    public int count = 0;
+    
     public GameHandlerScript GameHandler;
     public TextMeshProUGUI LeaderText;
     void Start()
@@ -81,7 +81,7 @@ public class GameOverScript : MonoBehaviour
         int count = GameHandler.numScores;
         for(int i  = 0; i < count; i++)
         {
-            LeaderBoardStr = LeaderBoardStr + String.Format( i + 1 + ". " + leaderBoard.scores[i] + "\n");
+            LeaderBoardStr = LeaderBoardStr + String.Format( i + 1 + ". {0:F2} m \n" , leaderBoard.scores[i]);
             
         }
 

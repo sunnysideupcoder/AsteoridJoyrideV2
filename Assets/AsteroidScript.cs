@@ -7,7 +7,7 @@ public class AsteroidScript : MonoBehaviour
 {
     public GameObject Plane;
     public float spinRate;
-    private int count = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +17,10 @@ public class AsteroidScript : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    //rotate asteroids
     void Update()
     {
-
         transform.Rotate(0, 0, spinRate*Time.deltaTime);
-
-        //asteroids move left so ship doesnt have to move as fast
-        //transform.position = obj.transform.position + new Vector3(speed * Time.deltaTime, 0, 0);
 
     }
 
