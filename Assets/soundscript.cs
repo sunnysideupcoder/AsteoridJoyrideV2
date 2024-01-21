@@ -13,7 +13,6 @@ public class soundscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //src.Play();
         gameMusic.loop = true; //repeats the audio clip until its stopped
 
     }
@@ -64,10 +63,7 @@ public class soundscript : MonoBehaviour
 
     }
 
-    void PlayGameMusic()
-    {
 
-    }
 
 
 }

@@ -13,10 +13,11 @@ public class PlaneMovement : MonoBehaviour
     public float playerSens;
     public bool escape;
     private GameOverScript GameOver;
-    
-    
-    
-        
+    public int BounceOffAngle;
+
+
+
+
     private Controls PlayerControls;
     private void Awake()
     {
@@ -41,9 +42,6 @@ public class PlaneMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //rb = gameObject.GetComponent<Rigidbody2D>();
-        //alive = true;
-        
 
         LogicScript logicScript = logic.GetComponent<LogicScript>();
 
@@ -82,7 +80,7 @@ public class PlaneMovement : MonoBehaviour
         {
             
             float zDegrees = steer * steerSens*Time.deltaTime*playerSens;
-            this.transform.Rotate(0, 0, zDegrees);
+            transform.Rotate(0, 0, zDegrees);
 
         }
 
@@ -97,11 +95,25 @@ public class PlaneMovement : MonoBehaviour
 
         float xVelocity = linear * math.cos(rotation) * planeSpeed * Time.deltaTime;
 
-
-
-        
+        // if else is to create invisible barrier at top and bottom, 
+        //if part normal movement within the boundaries
+        if (math.abs(transform.position.y) < 19.0)
 
         transform.position = transform.position + new Vector3(xVelocity, yVelocity, 0);
+
+        else
+        {
+            if(transform.position.y < 0)
+            {
+                transform.position = transform.position + new Vector3(+math.abs(xVelocity), +math.abs(yVelocity), 0);
+            }
+            else
+            {
+                transform.position = transform.position + new Vector3(+math.abs(xVelocity), -math.abs(yVelocity), 0);
+            }
+        
+
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -131,5 +143,16 @@ public class PlaneMovement : MonoBehaviour
             this.transform.Rotate(0,0,rotation);
         }
         
+    }
+
+    //temporarely takes 
+    public void straightPlane()
+    {
+        if (transform.position.y > 0)
+        {
+            BounceOffAngle *= -1;
+        }
+        transform.rotation = Quaternion.Euler(0, 0, BounceOffAngle);
+        transform.position = transform.position + new Vector3(0, 0, 0);
     }
 }
