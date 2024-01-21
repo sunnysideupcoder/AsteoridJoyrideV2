@@ -14,7 +14,7 @@ public class soundscript : MonoBehaviour
     void Start()
     {
         //src.Play();
-        
+        gameMusic.loop = true; //repeats the audio clip until its stopped
 
     }
 
