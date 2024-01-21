@@ -5,9 +5,11 @@ using UnityEngine;
 public class soundscript : MonoBehaviour
 {
     public AudioSource src;
-    public AudioClip soundClip;
+    public AudioSource gameMusic;
     public GameObject plane;
+    public GameObject gameOverScreen;
     private bool neverDone;
+    private bool neverDoneMusic = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,20 +22,27 @@ public class soundscript : MonoBehaviour
     void Update()
     {
         PlayExplosion(src);
-        /*
-        if (!plane.activeInHierarchy)
-        {
-            if (!neverDone)
-            {
-                Debug.Log("Explosion!!!");
 
-                src.Play();
-                neverDone = true;
+        //plays music while game is happening
+        if (!gameOverScreen.activeInHierarchy)
+        {
+            if (!neverDoneMusic)
+            {
+                
+
+                gameMusic.Play();
+                neverDoneMusic = true;
 
             }
+        //when game over screen appers it resets neverDoneMusic so next run it starts the music over and stops the music
+        }
+        else
+        {
+            neverDoneMusic = false;
+            gameMusic.Stop();
 
         }
-        */
+
 
     }
 
@@ -44,7 +53,7 @@ public class soundscript : MonoBehaviour
         {
             if (!neverDone)
             {
-                Debug.Log("Explosion!!!");
+                
 
                 src.Play();
                 neverDone = true;
@@ -52,6 +61,11 @@ public class soundscript : MonoBehaviour
             }
 
         }
+
+    }
+
+    void PlayGameMusic()
+    {
 
     }
 
