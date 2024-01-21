@@ -7,7 +7,8 @@ public class AsteroidScript : MonoBehaviour
 {
     public GameObject Plane;
     public float spinRate;
-    
+    public AudioSource explosionAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class AsteroidScript : MonoBehaviour
     //rotate asteroids
     void Update()
     {
+        explosionAudio.Play();
         transform.Rotate(0, 0, spinRate*Time.deltaTime);
 
     }
@@ -34,8 +36,9 @@ public class AsteroidScript : MonoBehaviour
 
         if (otherCollider == Plane.GetComponent<PolygonCollider2D>())
         {
-            //gameObject always refers to the game object that holds this script
+            
             otherCollider.gameObject.SetActive(false);
+            
         }
     }
 

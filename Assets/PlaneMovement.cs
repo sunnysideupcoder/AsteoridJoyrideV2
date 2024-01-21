@@ -9,15 +9,11 @@ public class PlaneMovement : MonoBehaviour
     public Rigidbody2D rb;
     public float planeSpeed;
     public float steerSens;
-    //private Vector2 position;
-    //private Vector2 velocity;
-    //private Vector2 rotation;
-    //public bool alive;
     public GameObject logic;
     public float playerSens;
     public bool escape;
-
     private GameOverScript GameOver;
+    
     
     
         
@@ -110,9 +106,12 @@ public class PlaneMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         GameOver = GameObject.Find("GameOverScreen").GetComponent<GameOverScript>();
         GameOver.GameRestart();
         Debug.Log("gameRestart called");
+
+        
         
         
     }
