@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//no longer in use
 // detects when any object collides with 
 public class BarricadeScript : MonoBehaviour
 {
