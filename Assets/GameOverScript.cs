@@ -77,12 +77,13 @@ public class GameOverScript : MonoBehaviour
         GameHandlerScript.LeaderBoardData leaderBoard = GameHandler.UpdateLeaderboard(currentScore);
 
         //this part makes a very long string by referecing the different parts of the leaderboard scores array then sets the text of the object
-        string LeaderBoardStr = "Top Scores!!!\n";
+        string LeaderBoardStr = "Top Scores\n";
         int count = GameHandler.numScores;
         for(int i  = 0; i < count; i++)
         {
-            LeaderBoardStr = LeaderBoardStr + String.Format( i + 1 + ". {0:F2} m \n" , leaderBoard.scores[i]);
-            
+            //LeaderBoardStr = LeaderBoardStr + String.Format( "{0,-10} {1,-25:F2} {2,-10}\n" ,i+1, leaderBoard.scores[i] , "m");
+            LeaderBoardStr = LeaderBoardStr + String.Format(i+1 + ") {0, 0:F2} {1}\n", leaderBoard.scores[i], "m");
+
         }
 
         LeaderText.SetText(LeaderBoardStr);
