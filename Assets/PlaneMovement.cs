@@ -14,6 +14,7 @@ public class PlaneMovement : MonoBehaviour
     public bool escape;
     private GameOverScript GameOver;
     public int BounceOffAngle;
+    public float consFowardSpeed;
 
 
 
@@ -114,6 +115,8 @@ public class PlaneMovement : MonoBehaviour
         
 
         }
+
+        transform.position = transform.position + new Vector3(consFowardSpeed*math.abs(math.sin(rotation)),0,0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -156,9 +156,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1727192560}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -9, y: -5}
   m_SizeDelta: {x: 21.5, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &263458112
@@ -685,9 +685,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1727192560}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: 21.5, y: 12}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &823746626
@@ -1193,6 +1193,7 @@ MonoBehaviour:
   playerSens: 0
   escape: 0
   BounceOffAngle: 0
+  consFowardSpeed: 0.05
 --- !u!50 &1224887617
 Rigidbody2D:
   serializedVersion: 4
@@ -1624,7 +1625,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e5861f5a75e15ce48a7408f99e34931f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.536
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1751,7 +1752,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1c347b6bab9af3d45ba7c62ad74db18b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.213
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2017,12 +2018,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 93.8
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 19, y: 10.6875}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2347,7 +2348,7 @@ Transform:
   m_GameObject: {fileID: 1936970322}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.2, y: 0, z: 0}
+  m_LocalPosition: {x: 41.73, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

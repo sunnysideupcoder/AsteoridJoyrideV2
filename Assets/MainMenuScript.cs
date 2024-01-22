@@ -4,8 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static GameHandlerScript;
 using TMPro;
-//using TMPro.EditorUtilities;
-//using Unity.VisualScripting;
+
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -112,6 +111,7 @@ public class MainMenuScript : MonoBehaviour
         //set default settings in object
         playerSetting.setSensativity(0.5F);
         playerSetting.setDifficulty(2);
+        
 
         //Debug.Log("Updated sens" + playerSetting.getSensativity());
         //Debug.Log("Updated difficulty" + playerSetting.getDifficulty());
