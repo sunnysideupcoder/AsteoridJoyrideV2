@@ -9,20 +9,32 @@ public class GameHandlerScript : MonoBehaviour
 {
     public LogicScript logic;
     private string filepath = Application.dataPath + "/LeaderBoardData.json";
+    private string filepathMedium = Application.dataPath + "/LeaderBoardDataMedium.json";
+    private string filepathHard = Application.dataPath + "/LeaderBoardDataHard.json";
+    private string filepathExtreme = Application.dataPath + "/LeaderBoardDataExtreme.json";
+    
+
     public int numScores = 10;
     // Start is called before the first frame update
     void Start()
-    { 
+    {
 
-        
+        string[] files ={ filepath, filepathMedium, filepathHard,filepathExtreme };
 
         //checks if Json file with LeaderBoard Data already exists
         // If it doesn't it creats one
-        if (!(File.Exists(filepath)))
+        //creates a file for all difficulty ranges
+
+        for(int i  = 0; i < files.Length; i++)
         {
-            Debug.Log("File Created");
-            CreateLeaderboard(numScores, filepath);
+            if (!(File.Exists(files[i])))
+            {
+                //Debug.Log("File Created");
+                CreateLeaderboard(numScores, files[i]);
+            }
+
         }
+
 
     }
 
@@ -43,12 +55,13 @@ public class GameHandlerScript : MonoBehaviour
         //saving json string to json file
         File.WriteAllText(filepath, jsondata);
 
-        Debug.Log("Json data" + jsondata);
+        //Debug.Log("Json data" + jsondata);
     }
 
 
     //Reads Json file containing Leaderboard data and updates it with current score in the appropriate slot
     //also returns updated leader board data object
+    //second parameter is to store it in the appropriate json file based on difficulty
     public LeaderBoardData UpdateLeaderboard(float currentScore)
     {
         
