@@ -84,7 +84,9 @@ public class GameOverScript : MonoBehaviour
         GameHandlerScript.LeaderBoardData leaderBoard = GameHandler.UpdateLeaderboard(currentScore, Logic.difficulty);
 
         //this part makes a very long string by referecing the different parts of the leaderboard scores array then sets the text of the object
-        string LeaderBoardStr = "Top Scores!!\n";
+
+        string[] difficulties = { "Extreme", "Hard", "Medium" };
+        string LeaderBoardStr = difficulties[Logic.difficulty] + " Top Scores\n";
         int count = GameHandler.numScores;
         for(int i  = 0; i < count; i++)
         {
