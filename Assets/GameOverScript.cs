@@ -12,24 +12,30 @@ public class GameOverScript : MonoBehaviour
     public GameObject HorizontalObj;
     public TextMeshProUGUI ScoreText;   //had to assign it as Text Object to be able to access specific methods
     GameObject plane;
+    public GameObject LogicObject;
     public LogicScript Logic;
+    
     
     public GameHandlerScript GameHandler;
     public TextMeshProUGUI LeaderText;
     void Start()
     {
         
-        Logic = GameObject.Find("Logic").GetComponent<LogicScript>();
-        //Debug.Log("Game Over script started");
         GameOverObj = GameObject.Find("GameOverScreen");
 
         GameHandler = GameObject.Find("GameHandler").GetComponent<GameHandlerScript>();
+
+        
+
+        Logic = GameObject.Find("Logic").GetComponent<LogicScript>();
+
 
         //Change "Score" only when this is fist called so it stays in the position logic had right when the game ended aka right when this screen is activated
         UpdateScore();
         UpdateLeaderBoardText();
         
-
+        
+        
     }
 
     // Update is called once per frame
@@ -70,11 +76,12 @@ public class GameOverScript : MonoBehaviour
 
     }
 
+    
     private void UpdateLeaderBoardText()
     {
         
         float currentScore = Logic.distanceCovered();
-        GameHandlerScript.LeaderBoardData leaderBoard = GameHandler.UpdateLeaderboard(currentScore);
+        GameHandlerScript.LeaderBoardData leaderBoard = GameHandler.UpdateLeaderboard(currentScore, Logic.difficulty);
 
         //this part makes a very long string by referecing the different parts of the leaderboard scores array then sets the text of the object
         string LeaderBoardStr = "Top Scores!!\n";
@@ -92,7 +99,7 @@ public class GameOverScript : MonoBehaviour
     }
 
 
-
+    
 
 
 }

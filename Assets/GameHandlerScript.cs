@@ -8,7 +8,6 @@ using UnityEngine.UIElements;
 public class GameHandlerScript : MonoBehaviour
 {
     public LogicScript logic;
-    private string filepath = Application.dataPath + "/LeaderBoardData.json";
     private string filepathMedium = Application.dataPath + "/LeaderBoardDataMedium.json";
     private string filepathHard = Application.dataPath + "/LeaderBoardDataHard.json";
     private string filepathExtreme = Application.dataPath + "/LeaderBoardDataExtreme.json";
@@ -19,7 +18,7 @@ public class GameHandlerScript : MonoBehaviour
     void Start()
     {
 
-        string[] files ={ filepath, filepathMedium, filepathHard,filepathExtreme };
+        string[] files ={ filepathMedium, filepathHard,filepathExtreme };
 
         //checks if Json file with LeaderBoard Data already exists
         // If it doesn't it creats one
@@ -62,9 +61,15 @@ public class GameHandlerScript : MonoBehaviour
     //Reads Json file containing Leaderboard data and updates it with current score in the appropriate slot
     //also returns updated leader board data object
     //second parameter is to store it in the appropriate json file based on difficulty
-    public LeaderBoardData UpdateLeaderboard(float currentScore)
+    public LeaderBoardData UpdateLeaderboard(float currentScore, int difficulty)
     {
-        
+        //complete spaghetti code and lack of modularization DO NOT do
+        string filepathMedium = Application.dataPath + "/LeaderBoardDataMedium.json";
+        string filepathHard = Application.dataPath + "/LeaderBoardDataHard.json";
+        string filepathExtreme = Application.dataPath + "/LeaderBoardDataExtreme.json";
+        string[] files = { filepathMedium, filepathHard, filepathExtreme };
+
+        string filepath = files[difficulty];
 
         //get data from json 
         // sort array 
