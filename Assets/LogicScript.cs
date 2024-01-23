@@ -57,6 +57,7 @@ public class LogicScript : MonoBehaviour
         PlayerSetting playerSetting = JsonUtility.FromJson<PlayerSetting>(json);
         //change spawn rate based of selected difficulty
         difficulty = playerSetting.difficulty;
+        Debug.Log("Difficutly " + difficulty);
         sens = playerSetting.sensativity;
 
     }

@@ -69,7 +69,7 @@ public class GameHandlerScript : MonoBehaviour
         string filepathMedium = Application.dataPath + "/LeaderBoardDataMedium.json";
         string filepathHard = Application.dataPath + "/LeaderBoardDataHard.json";
         string filepathExtreme = Application.dataPath + "/LeaderBoardDataExtreme.json";
-        string[] files = { filepathMedium, filepathHard, filepathExtreme };
+        string[] files = { filepathEasy, filepathMedium, filepathHard, filepathExtreme };
 
         string filepath = files[difficulty];
 
