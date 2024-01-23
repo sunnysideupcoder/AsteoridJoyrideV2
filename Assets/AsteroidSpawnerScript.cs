@@ -73,7 +73,10 @@ public class AsteroidSpawnerScript : MonoBehaviour
       
                 break;
             case 2:
-                SpawnRate = SpawnRate + 0.1F;
+                SpawnRate = SpawnRate + 0.3F;
+                break;
+            case 3:
+                SpawnRate = SpawnRate + 0.6F;
                 break;
 
 

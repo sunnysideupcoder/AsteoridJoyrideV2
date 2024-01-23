@@ -11,14 +11,15 @@ public class GameHandlerScript : MonoBehaviour
     private string filepathMedium = Application.dataPath + "/LeaderBoardDataMedium.json";
     private string filepathHard = Application.dataPath + "/LeaderBoardDataHard.json";
     private string filepathExtreme = Application.dataPath + "/LeaderBoardDataExtreme.json";
-    
+    private string filepathEasy = Application.dataPath + "/LeaderBoardDataEasy.json";
+
 
     public int numScores = 10;
     // Start is called before the first frame update
     void Start()
     {
 
-        string[] files ={ filepathMedium, filepathHard,filepathExtreme };
+        string[] files ={ filepathEasy,filepathMedium, filepathHard,filepathExtreme };
 
         //checks if Json file with LeaderBoard Data already exists
         // If it doesn't it creats one
@@ -64,6 +65,7 @@ public class GameHandlerScript : MonoBehaviour
     public LeaderBoardData UpdateLeaderboard(float currentScore, int difficulty)
     {
         //complete spaghetti code and lack of modularization DO NOT do
+        string filepathEasy = Application.dataPath + "/LeaderBoardDataEasy.json";
         string filepathMedium = Application.dataPath + "/LeaderBoardDataMedium.json";
         string filepathHard = Application.dataPath + "/LeaderBoardDataHard.json";
         string filepathExtreme = Application.dataPath + "/LeaderBoardDataExtreme.json";

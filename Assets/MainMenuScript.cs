@@ -72,7 +72,6 @@ public class MainMenuScript : MonoBehaviour
 
         //adjust settings in object
         loadedData.setDifficulty(difficulty);
-        //loadedData.setSensativity(sensativity);
 
         //write this back into file
 
@@ -171,6 +170,13 @@ public class MainMenuScript : MonoBehaviour
             Debug.Log("Difficutly changed: " + difficulty);
             //AsteroidSpawnerScript.setSpawnRate(0.22F - 0.1F);
             UpdateSettings(SettingsFilepath, 2);
+
+        }
+        else if (difficulty == 3)
+        {
+            Debug.Log("Difficutly changed: " + difficulty);
+            //AsteroidSpawnerScript.setSpawnRate(0.22F - 0.1F);
+            UpdateSettings(SettingsFilepath, 3);
 
         }
 
