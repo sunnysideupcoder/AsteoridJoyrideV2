@@ -6,13 +6,17 @@ using UnityEngine.UI;
 public class SoundManager : MonoBehaviour
 {
     public Slider volumeSlider;
+    private string vol = "musicVolume";
     // Start is called before the first frame update
     void Start()
     {
-       
-        if (!(PlayerPrefs.HasKey("musicVolume")))
+        Debug.Log("sound manager started");
+        
+        
+        if (!(PlayerPrefs.HasKey(vol)))
         {
-            PlayerPrefs.SetFloat("musicVolume", 1);
+            //Debug.Log("no music volume" + PlayerPrefs.GetFloat(vol));
+            PlayerPrefs.SetFloat("musicVolume", 1.0F);
             load();
         }
         else
@@ -28,18 +32,18 @@ public class SoundManager : MonoBehaviour
     public void changeVolume()
     {
         AudioListener.volume = volumeSlider.value;
-
+        save();
     }
 
 
     private void load()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        volumeSlider.value = PlayerPrefs.GetFloat(vol);
     }
 
     private void save()
     {
-        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
+        PlayerPrefs.SetFloat(vol, volumeSlider.value);
     }
 
 

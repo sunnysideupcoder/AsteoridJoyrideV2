@@ -8,7 +8,8 @@ public class backgroundscript : MonoBehaviour
     public float scrollSpeed;
     private GameObject Camera;
     private float distanceToCamera;
-    private float canvasWidth = 34.5F;
+    public float canvasWidth = 34.5F;
+    //34.27 nice
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class backgroundscript : MonoBehaviour
         Camera = GameObject.Find("Main Camera");
         distanceToCamera = transform.position.x - Camera.transform.position.x ;
         Debug.Log(distanceToCamera);
+        
 
 
     }

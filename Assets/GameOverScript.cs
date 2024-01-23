@@ -61,8 +61,8 @@ public class GameOverScript : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("quit game");
-        Application.Quit();
+        SceneManager.LoadScene("Main Menu");
+        //Application.Quit();
     }
 
     //method to change score on display screen, uses distance covered method from logic object

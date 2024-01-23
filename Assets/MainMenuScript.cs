@@ -23,7 +23,7 @@ public class MainMenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Main Menu Script started, FilePath:" + SettingsFilepath);
+        //Debug.Log("Main Menu Script started, FilePath:" + SettingsFilepath);
         PlayerSetting playerSetting = new PlayerSetting();
 
         //updateSettignsFile
